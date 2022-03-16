@@ -4,15 +4,14 @@ from bs4 import BeautifulSoup
 
 class Search:
 
-    def __init__(self, termos):
-        self.termos = termos
+    def __init__(self, palavra):
+        self.palavra = palavra
 
     def gera_link_pesquisa(self):
         lista_links = []
 
-        for termos in self.termos:
-            link = f'https://news.google.com/search?q={termos}%20when%3A1h&hl=pt-BR&gl=BR&ceid=BR%3Apt-419'
-            lista_links.append(link)
+        link = f'https://news.google.com/search?q={self.palavra}%20when%3A1h&hl=pt-BR&gl=BR&ceid=BR%3Apt-419'
+        lista_links.append(link)
 
         return lista_links
 
@@ -53,4 +52,3 @@ class Search:
             del lista_links_relativos[0:2]
 
         return lista_links_reais
-

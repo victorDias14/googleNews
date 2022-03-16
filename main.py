@@ -13,15 +13,16 @@ while True:
     else:
         break
 
-busca = search.Search(listaTermos)
+for palavra in listaTermos:
+    busca = search.Search(palavra)
 
-listaLinks = busca.gera_link_pesquisa()
+    listaLinks = busca.gera_link_pesquisa()
 
-listaLinksRelativosTitulos = busca.gera_links_relativos_titulo_noticia(listaLinks)
-listaLinksRelativos = listaLinksRelativosTitulos[0]
-listaTitulos = listaLinksRelativosTitulos[1]
+    listaLinksRelativosTitulos = busca.gera_links_relativos_titulo_noticia(listaLinks)
+    listaLinksRelativos = listaLinksRelativosTitulos[0]
+    listaTitulos = listaLinksRelativosTitulos[1]
 
-listaLinksReais = busca.gera_link_real(listaLinksRelativos)
+    listaLinksReais = busca.gera_link_real(listaLinksRelativos)
 
-banco = database.Database(listaTitulos, listaLinksReais)
-banco.alimenta_banco()
+    banco = database.Database(palavra, listaTitulos, listaLinksReais)
+    banco.alimenta_banco()
